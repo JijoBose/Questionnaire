@@ -6,8 +6,10 @@
 </p>
 
 <p>
-  <strong>Content:</strong>
-  <li><%= @question.content %></li>
+  <strong>Options:</strong><br>
+  <% list_all_options(@question.id).each do |question| %>
+      <%= question.content %><br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
