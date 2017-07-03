@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :surveys
   get 'static_pages/index'
 
   get 'static_pages/about'
