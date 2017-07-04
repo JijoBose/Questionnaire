@@ -7,7 +7,7 @@
 
 
 <h4>Add Questions:</h4>
-<%= nested_form_for([@survey, @survey.questions.build]) do |f| %>
+<%= simple_nested_form_for([@survey, @survey.questions.build]) do |f| %>
 	<p>
 		<%= f.label 'Question' %><br>
 		<%= f.text_field :title %>
@@ -17,7 +17,7 @@
 		<%= f.text_field :survey_id %>
 	</p>
 	<p>
-		<%= f.fields_for :options do |option_form| %>
+		<%= f.simple_fields_for :options do |option_form| %>
 			<%= option_form.text_field :name %>
 			<%= option_form.link_to_remove "Remove this option" %>
 		<% end %>
