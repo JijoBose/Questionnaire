@@ -1,35 +1,13 @@
 <h1>preview</h1>
 
 
-<p>
-  <strong>Survery Name:</strong>
-  <%= @survey.name %>
-</p>
+<%= form_for([@survey, @survey.answers.build]) do |f| %>
+  <p>
+    <%= f.label :question_id %><br>
+    <%= f.select(:question_id, listing_question(@survey.id), :prompt => 'Select Question') %><br>
+  </p>
 
-<p>
-  <strong>Survery ID:</strong>
-  <%= @survey.id %>
-</p>
-
-<h2>Questions</h2>
-<% sorting_question(@survey.id).each do |question| %>
-<p>
-  <strong>Question ID</strong>
-  <%= question.id %>
-</p>
-<p>
-  <strong>survey_id:</strong>
-  <%= question.survey_id %>
-</p>
-<p>
-  <strong>title:</strong>
-  <%= question.title %>
-</p>
-<h2> options: </h2>
-	<%= select :
-	<% sort_options(question.id).each do |option| %>
-		<p>
-		<%= option.name %>
-		</p>
-	<% end %><hr>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>

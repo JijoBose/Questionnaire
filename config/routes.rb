@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   	member do
   	  	get 'preview'
   	end
+    resources :answers
   end
+
   
 
   get 'surveys/index'

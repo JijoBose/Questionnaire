@@ -15,6 +15,7 @@ class SurveysController < ApplicationController
   end
 
   def preview
+    @surveys = Survey.all
     @first_value = params[:passed_parameter]
     @get_value = @first_value
     #@currentpost = Survey.find(params[:id])
