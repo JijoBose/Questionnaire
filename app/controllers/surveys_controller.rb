@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :set_survey, only: [:preview, :show, :edit, :update, :destroy]
 
   # GET /surveys
   # GET /surveys.json
@@ -30,6 +30,7 @@ class SurveysController < ApplicationController
       if @survey.save
         format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
         format.json { render :show, status: :created, location: @survey }
+        format.json { render :preview, status: :created, location: @survey }
       else
         format.html { render :new }
         format.json { render json: @survey.errors, status: :unprocessable_entity }
@@ -44,6 +45,7 @@ class SurveysController < ApplicationController
       if @survey.update(survey_params)
         format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey }
+        format.json { render :preview, status: :created, location: @survey }
       else
         format.html { render :edit }
         format.json { render json: @survey.errors, status: :unprocessable_entity }
@@ -59,6 +61,10 @@ class SurveysController < ApplicationController
       format.html { redirect_to surveys_url, notice: 'Survey was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def preview
+    
   end
 
   private
