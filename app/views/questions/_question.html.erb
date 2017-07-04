@@ -1,0 +1,18 @@
+<p>
+	<strong>Question ID: </strong>
+	<%= question.id %>
+</p>
+<p>
+	<strong>Survey ID: </strong>
+	<%= question.survey_id %>
+</p>
+
+<p>
+	<strong>Title: </strong>
+	<%= question.title %>
+</p>
+
+<p>
+	<%= link_to 'Delete Question', [question.survey, question], method: :delete,
+									data: { confirm: 'Are you sure?'} %>
+</p>

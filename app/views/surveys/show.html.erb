@@ -5,31 +5,11 @@
   <%= @survey.name %>
 </p>
 
-<h2>Questions</h2>
-<% @survey.questions.each do |question| %>
-<p>
-  <strong>title:</strong>
-  <%= question.title %>
-</p>
 
-<p>
-  <strong>survey_id:</strong>
-  <%= question.survey_id %>
-</p>
-<% end %>
-
-<h2> options: </h2>
-<% list_all_options.each do |option| %>
-<p>
-	<strong>Options:</strong>
-	<%= option.name %>
-</p>
-<% end %>
-
-<h2>Add Questions:</h2>
+<h4>Add Questions:</h4>
 <%= nested_form_for([@survey, @survey.questions.build]) do |f| %>
 	<p>
-		<%= f.label :title %><br>
+		<%= f.label 'Question' %><br>
 		<%= f.text_field :title %>
 	</p>
 	<p>
@@ -48,7 +28,32 @@
 	</p>
 <% end %>
 
+<h2>Questions</h2>
+<% sorting_question(@survey.id).each do |question| %>
+<p>
+  <strong>Question ID</strong>
+  <%= question.id %>
+</p>
+<p>
+  <strong>survey_id:</strong>
+  <%= question.survey_id %>
+</p>
+<p>
+  <strong>title:</strong>
+  <%= question.title %>
+</p>
+<h2> options: </h2>
+	<% sort_options(question.id).each do |option| %>
+<!-- 		<p>
+		<strong>Question ID</strong>
+		<%# option.question_id %>
+		</p> -->
 
+		<p>
+		<%= option.name %>
+		</p>
+	<% end %><hr>
+<% end %>
 
 
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
