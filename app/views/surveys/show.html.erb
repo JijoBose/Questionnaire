@@ -1,9 +1,42 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Survery Name:</strong>
   <%= @survey.name %>
 </p>
 
+<h2>Questins</h2>
+<% @survey.questions.each do |question| %>
+<p>
+  <strong>title:</strong>
+  <%= question.title %>
+</p>
+
+<p>
+  <strong>survey_id:</strong>
+  <%= question.survey_id %>
+</p>
+<% end %>
+
+<h2>Add Questions:</h2>
+<%= form_for([@survey, @survey.questions.build]) do |f| %>
+	<p>
+		<%= f.label :title %><br>
+		<%= f.text_field :title %>
+	</p>
+	<p>
+		<%= f.label :survey_id %><br>
+		<%= f.text_field :survey_id %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>
+
+<br>
+
+<h4>Questions:</h4>
+
