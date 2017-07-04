@@ -5,7 +5,7 @@
   <%= @survey.name %>
 </p>
 
-<h2>Questins</h2>
+<h2>Questions</h2>
 <% @survey.questions.each do |question| %>
 <p>
   <strong>title:</strong>
@@ -18,8 +18,16 @@
 </p>
 <% end %>
 
+<h2> options: </h2>
+<% list_all_options.each do |option| %>
+<p>
+	<strong>Options:</strong>
+	<%= option.name %>
+</p>
+<% end %>
+
 <h2>Add Questions:</h2>
-<%= form_for([@survey, @survey.questions.build]) do |f| %>
+<%= nested_form_for([@survey, @survey.questions.build]) do |f| %>
 	<p>
 		<%= f.label :title %><br>
 		<%= f.text_field :title %>
@@ -29,14 +37,23 @@
 		<%= f.text_field :survey_id %>
 	</p>
 	<p>
+		<%= f.fields_for :options do |option_form| %>
+			<%= option_form.text_field :name %>
+			<%= option_form.link_to_remove "Remove this option" %>
+		<% end %>
+		<p><%= f.link_to_add "Add a Option", :options %></p>
+	</p>
+	<p>
 		<%= f.submit %>
 	</p>
 <% end %>
+
+
+
 
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>
 
 <br>
 
-<h4>Questions:</h4>
 
