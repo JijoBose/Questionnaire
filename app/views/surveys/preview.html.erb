@@ -1,8 +1,6 @@
 <h1>preview</h1>
 <p id="notice"><%= notice %></p>
 
-<%# form_tag "/answers" do %>
-
 <% listing_question(@survey.id).each do |aa| %>
 
   <%= form_for([@survey, @survey.answers.build]) do |f| %>
@@ -35,6 +33,3 @@
     $('#notice').text('submitted');
   });
 </script>
-
-<%#submit_tag "Submit" %>
-<%# end %>
