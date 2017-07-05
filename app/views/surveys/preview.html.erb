@@ -1,10 +1,13 @@
 <h1>preview</h1>
 
+<%# form_tag "/answers" do %>
+
 <% listing_question(@survey.id).each do |aa| %>
 
 	<%= form_for([@survey, @survey.answers.build]) do |f| %>
 	<p>
-		<%= f.label :question_id %><br>
+		<h3><%= f.label aa.title %></h3><br>
+		<%= f.label 'Question ID' %><br>
 		<%= f.text_field :question_id, :value => aa.id %>
 		<br>
 	</p>
@@ -22,4 +25,8 @@
     	<%= f.submit %>
   	</p>
   	<% end %>
+  	<hr>
 <% end %>
+
+<%# submit_tag "Submit" %>
+<%# end %>
