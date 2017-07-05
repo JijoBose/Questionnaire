@@ -1,0 +1,13 @@
+<h1>Responses</h1>
+<br>
+
+<% listing_question(@survey.id).each do |aa| %>
+	<h4>Question: <%= aa.id %> <%= aa.title %></h4>
+
+	<% listing_options(aa.id).each do |opt| %>
+		<p><%= opt.name %>
+			<%= counting_options(opt.question_id, opt.id) %>
+		</p>
+	<% end %>
+	<br>
+<% end %>

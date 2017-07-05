@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   	member do
   	  	get 'preview'
   	end
+    member do
+        get 'result'
+    end
     resources :answers
   end
 

@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:preview, :show, :edit, :update, :destroy]
+  before_action :set_survey, only: [:result, :preview, :show, :edit, :update, :destroy]
 
   # GET /surveys
   # GET /surveys.json
@@ -12,10 +12,17 @@ class SurveysController < ApplicationController
   def show
     @first_value = params[:id]
     preview_survey_path(passed_parameter: params[:id])
+    result_survey_path(passed_parameter: params[:id])
   end
 
   def preview
     @surveys = Survey.all
+    @first_value = params[:passed_parameter]
+    @get_value = @first_value
+  end
+
+  def result
+    @surveys1 = Survey.all
     @first_value = params[:passed_parameter]
     @get_value = @first_value
   end

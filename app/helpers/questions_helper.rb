@@ -8,4 +8,12 @@ module QuestionsHelper
 	def sorting_question(sid)
 		Question.where(survey_id: sid)
 	end
+
+	def listing_options(qid)
+		Option.where(question_id: qid)		
+	end
+
+	def counting_options(qid, optid)
+		Answer.where(question_id: qid).where(option_id: optid).count()
+	end
 end
