@@ -4,29 +4,36 @@
 
 <% listing_question(@survey.id).each do |aa| %>
 
-	<%= form_for([@survey, @survey.answers.build]) do |f| %>
-	<p>
-		<h3><%= f.label aa.title %></h3><br>
-		<%= f.label 'Question ID' %><br>
-		<%= f.text_field :question_id, :value => aa.id %>
-		<br>
-	</p>
-	<p>
-		<%= f.label :survey_id %><br>
-		<%= f.text_field :survey_id %><br>
-	</p>
-	<p>
-  	<% Option.where(question_id: aa.id).each do |rt| %>
-  		<%= f.radio_button :option_id, rt.id %>
-  		<%= f.label :option_id, rt.name %>
-	<% end %>
-  	</p>
-  	 <p>
-    	<%= f.submit 'Send response' %>
-  	</p>
-  	<% end %>
-  	<hr>
+  <%= form_for([@survey, @survey.answers.build]) do |f| %>
+  <p>
+    <h3><%= f.label aa.title %></h3><br>
+    <%= f.label 'Question ID' %><br>
+    <%= f.text_field :question_id, :value => aa.id %>
+    <br>
+  </p>
+  <p>
+    <%= f.label :survey_id %><br>
+    <%= f.text_field :survey_id %><br>
+  </p>
+  <p>
+    <% Option.where(question_id: aa.id).each do |rt| %>
+      <%= f.radio_button :option_id, rt.id, class: 'opt-cls' %>
+      <%= f.label :option_id, rt.name %>
+  <% end %>
+    </p>
+     <p>
+      <%= f.submit 'Send response' %>
+    </p>
+    <% end %>
+    <hr>
 <% end %>
+
+<script type="text/javascript">
+  $('.opt-cls').on('click', function(e) {
+    e.preventDefault();
+    $(this).closest('form').submit();
+  });
+</script>
 
 <%#submit_tag "Submit" %>
 <%# end %>
