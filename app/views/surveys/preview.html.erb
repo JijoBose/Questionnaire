@@ -1,4 +1,5 @@
 <h1>preview</h1>
+<p id="notice"><%= notice %></p>
 
 <%# form_tag "/answers" do %>
 
@@ -20,11 +21,10 @@
       <%= f.radio_button :option_id, rt.id, class: 'opt-cls' %>
       <%= f.label :option_id, rt.name %>
   <% end %>
-    </p>
-     <p>
       <%# f.submit 'Send response' %>
     </p>
     <% end %>
+
     <hr>
 <% end %>
 
@@ -32,6 +32,7 @@
   $('.opt-cls').on('click', function(e) {
     e.preventDefault();
     $(this).closest('form').submit();
+    $('#notice').text('submitted');
   });
 </script>
 
