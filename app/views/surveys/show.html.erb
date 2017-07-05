@@ -8,7 +8,7 @@
 <h4>Add Questions:</h4>
 <%= simple_nested_form_for([@survey, @survey.questions.build]) do |f| %>
 	<p>
-		<%= f.label 'Question' %><br>
+		<%= f.label 'Question title' %><br>
 		<%= f.text_field :title %>
 	</p>
 	<p>
@@ -42,7 +42,7 @@
   <%= question.title %>
 </p>
 <p>
-	<%= link_to 'Delete Question', [question.survey, question],
+	<%= button_to 'Delete Question', [question.survey, question],
 				method: :delete, data: { confirm: 'are you sure ?' } %>
 </p>
 
@@ -51,7 +51,8 @@
 		<p>
 		<%= option.name %>
 		</p>
-	<% end %><hr>
+	<% end %>
+	<hr>
 <% end %>
 
 <h3><%= link_to 'Preview', preview_survey_path %> |
