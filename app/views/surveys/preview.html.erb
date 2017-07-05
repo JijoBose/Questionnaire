@@ -1,23 +1,19 @@
 <h1>preview</h1>
 
-<%= listing_question(@survey.id).each do %>
+<% listing_question(@survey.id).each do |aa| %>
 
 	<%= form_for([@survey, @survey.answers.build]) do |f| %>
 	<p>
 		<%= f.label :question_id %><br>
-		<%= f.text_field :question_id %><br>
+		<%= f.text_field :question_id, :value => aa.id %>
+		<br>
 	</p>
 	<p>
 		<%= f.label :survey_id %><br>
 		<%= f.text_field :survey_id %><br>
 	</p>
-
-<!-- 	<p>
-		<%# f.label :option_id %><br>
-		<%# f.text_field :option_id %><br>
-	</p> -->
 	<p>
-  	<% Option.where(question_id: @survey.id).each do |rt| %>
+  	<% Option.where(question_id: aa.id).each do |rt| %>
   		<%= f.radio_button :option_id, rt.id %>
   		<%= f.label :option_id, rt.name %>
 	<% end %>
