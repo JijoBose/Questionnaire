@@ -41,6 +41,11 @@
   <strong>title:</strong>
   <%= question.title %>
 </p>
+<p>
+	<%= link_to 'Delete Question', [question.survey, question],
+				method: :delete, data: { confirm: 'are you sure ?' } %>
+</p>
+
 <h2> options: </h2>
 	<% sort_options(question.id).each do |option| %>
 <!-- 		<p>
