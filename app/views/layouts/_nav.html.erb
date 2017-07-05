@@ -1,0 +1,61 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Shop180', root_path, class: "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Homepage', root_path %></li>
+        <li><%# link_to 'Transactions', transactions_path %></li>
+        <li><%# link_to 'About', static_pages_about_path %></li>
+
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <%# if user_signed_in? %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong><%# current_user.firstname %>&nbsp<%# current_user.lastname %></strong><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><%# link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+              <li><%# link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+            <%# else %>
+              <li><%# link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+              <li><%# link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+            <%# end %>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <%# if user_signed_in? %>
+              <%# if current_user.sellerstat == false %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <strong>Seller Account</strong><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%# link_to 'Become a seller', new_seller_path, :class => 'navbar-link' %></li>
+              <%# else %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <strong>Manage <%# seller_name_ret %></strong><span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><%# link_to 'Seller info', sellers_path, :class => 'navbar-link' %></li>
+              <%# end %>
+            <%# else %>
+            <%# none #%>
+            <%# end %>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
