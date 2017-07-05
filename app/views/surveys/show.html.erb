@@ -42,8 +42,9 @@
   <%= question.title %>
 </p>
 <p>
-	<%= button_to 'Delete Question', [question.survey, question],
-				method: :delete, data: { confirm: 'are you sure ?' } %>
+	<%= button_to 'Delete', [question.survey, question],
+				method: :delete, data: { confirm: 'are you sure ?' },
+				:remote => true, :class => 'delete_question' %>
 </p>
 
 <h2> options: </h2>
