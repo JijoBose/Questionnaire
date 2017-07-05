@@ -48,11 +48,6 @@
 
 <h2> options: </h2>
 	<% sort_options(question.id).each do |option| %>
-<!-- 		<p>
-		<strong>Question ID</strong>
-		<%# option.question_id %>
-		</p> -->
-
 		<p>
 		<%= option.name %>
 		</p>
@@ -65,5 +60,3 @@
 <%= link_to 'Back', surveys_path %></h3>
 
 <br>
-
-

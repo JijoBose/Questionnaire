@@ -5,6 +5,13 @@ class OptionsController < ApplicationController
 		redirect_to question_path(@question)
 	end
 
+	def destroy
+		@survey = Survey.find(params[:survey_id])
+		@option = @survey.options.find(params[:id])
+		@option.destroy
+		redirect_to survey_path(@survey)		
+	end
+
 	private
 		def option_params
 			params.require(:option).permit(:name)	
