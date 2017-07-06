@@ -14,9 +14,9 @@
     <% @surveys.each do |survey| %>
       <tr>
         <td><%= survey.name %></td>
-        <td><%= link_to 'Open Survey', survey %></td>
-        <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
-        <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Open Survey', survey, class: "btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_survey_path(survey), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

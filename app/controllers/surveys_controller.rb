@@ -1,13 +1,8 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:result, :preview, :show, :edit, :update, :destroy]
-  before_action :admin_owner, only: [:index, :edit, :update, :destroy]
+  before_action :admin_owner, only: [:index, :show, :edit, :update, :destroy]
 
-  def admin_owner
-    unless current_user.adminstat == true
-      flash[:notice] = "Access denied"
-      redirect_to root_path
-    end
-  end
+
 
   # GET /surveys
   # GET /surveys.json
@@ -86,6 +81,13 @@ class SurveysController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def admin_owner
+      unless current_user.adminstat == true
+        flash[:notice] = "Access denied"
+      redirect_to root_path
+      end
+    end
+
     def set_survey
       @survey = Survey.find(params[:id])
     end
@@ -94,4 +96,5 @@ class SurveysController < ApplicationController
     def survey_params
       params.require(:survey).permit(:user_id, :name)
     end
+
 end

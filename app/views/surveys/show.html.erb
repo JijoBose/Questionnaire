@@ -23,7 +23,7 @@
 		<p><%= f.link_to_add "Add a Option", :options %></p>
 	</p>
 	<p>
-		<%= f.submit %>
+		<%= f.button :submit, class: "btn btn-success" %>
 	</p>
 <% end %>
 
@@ -44,7 +44,7 @@
 <p>
 	<%= button_to 'Delete', [question.survey, question],
 				method: :delete, data: { confirm: 'are you sure ?' },
-				:remote => true, :class => 'delete_question' %>
+				:remote => true, :class => 'delete_question', class: "btn btn-danger" %>
 </p>
 
 <h2> options: </h2>
