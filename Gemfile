@@ -10,6 +10,8 @@ end
 gem 'rails', '~> 5.1.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
+# Authentication
+gem 'devise', '~> 4.3'
 # layouts
 gem 'simple_form'
 gem "nested_form"
