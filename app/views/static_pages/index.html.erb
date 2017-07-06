@@ -1,2 +1,19 @@
-<h1>StaticPages#index</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+<h1>List of all Survey</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% survey_preview.each do |survey| %>
+      <tr>
+        <td><%= survey.name %></td>
+        <td><%= link_to 'Answer the Survey', preview_survey_path(survey) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
