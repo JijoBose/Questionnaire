@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 	def create
 		@survey = Survey.find(params[:survey_id])
-		@question = @survey.questions.create(question_params)
+		@question = @survey.questions.create!(question_params)
 		redirect_to survey_path(@survey)
 	end
 
@@ -14,6 +14,6 @@ class QuestionsController < ApplicationController
 
 	private
 		def question_params
-			params.require(:question).permit(:title, options_attributes: [:id, :name])
+			params.require(:question).permit(:survey_id, :title, options_attributes: [:id, :name, :_destroy])
 		end
 end

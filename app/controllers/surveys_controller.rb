@@ -1,5 +1,13 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:result, :preview, :show, :edit, :update, :destroy]
+  before_action :admin_owner, only: [:index, :edit, :update, :destroy]
+
+  def admin_owner
+    unless current_user.adminstat == true
+      flash[:notice] = "Access denied"
+      redirect_to root_path
+    end
+  end
 
   # GET /surveys
   # GET /surveys.json
@@ -40,7 +48,7 @@ class SurveysController < ApplicationController
   # POST /surveys.json
   def create
     @survey = Survey.new(survey_params)
-
+    @survey.user_id = current_user.id
     respond_to do |format|
       if @survey.save
         format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
@@ -84,6 +92,6 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:name)
+      params.require(:survey).permit(:user_id, :name)
     end
 end
