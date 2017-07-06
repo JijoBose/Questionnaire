@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users, :controllers => { registrations: 'registrations'}
   resources :surveys do
   	resources :questions do
   		resources :options
